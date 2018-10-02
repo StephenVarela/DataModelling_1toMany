@@ -1,0 +1,35 @@
+
+#1
+SELECT title FROM articles WHERE(author_id = (SELECT id FROM authors where(name = 'Kara Melton')));
+
+#2
+SELECT name From Cities where(province_id = (SELECT id FROM provinces WHERE(name = 'Ontario')));
+
+#3
+SELECT name FROM authors WHERE(id = (SELECT author_id FROM articles WHERE(title = 'Coding Bootcamps and Emotional Labor')));
+
+#4
+SELECT COUNT(*) FROM provinces WHERE(country_id = (SELECT id FROM countries WHERE(name = 'Canada')));
+
+#5
+SELECT COUNT (*) FROM persons WHERE(residence_id = (SELECT id FROM residences WHERE(address = '4740 McDermott Street')));
+
+#6
+SELECT name FROM cities WHERE(id = (SELECT city_id FROM residences WHERE(address = '4740 McDermott Street')));
+
+#7
+SELECT name FROM provinces WHERE(id = (SELECT province_id FROM cities WHERE(id = (SELECT city_id FROM residences WHERE(address = '4740 McDermott Street')))));
+
+#8
+SELECT name FROM countries WHERE(id = (SELECT country_id FROM provinces WHERE(id = (SELECT province_id FROM cities WHERE(id = (SELECT city_id FROM residences WHERE(address = '4740 McDermott Street')))))));
+
+#9
+SELECT name FROM countries
+    WHERE(id = (SELECT country_id FROM provinces
+    WHERE(id = (SELECT province_id FROM cities
+    WHERE(id = (SELECT city_id FROM residences
+    WHERE(id = (SELECT residence_id FROM Persons
+    WHERE(name = 'Destini Davis')))))))));
+
+#10
+SELECT COUNT(*) FROM articles WHERE(author_id = (SELECT id FROM authors WHERE(name = 'Aditya Mukerjee')));
